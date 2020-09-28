@@ -1,0 +1,5 @@
+<% for (post of posts) { %>
+    <div class="post-item">
+      <a href="/blog/<%= post.slice(0, -3) %>" class="post-item-link">  <%= post.slice(0,-3) %>   </a>
+    </div>
+<% } %>
