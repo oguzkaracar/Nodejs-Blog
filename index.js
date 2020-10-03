@@ -39,18 +39,18 @@ app.get("/blog/:article", (req, res) => {
 		res.render("blog/", {
 			post: result,
 			title: file.data.title,
-			date:file.data.date,
+			date: file.data.date,
 			description: file.data.description,
 			image: file.data.image,
 		});
 	} catch (error) {
-		res.status(404).render('404');
+		res.status(404).render("404");
 	}
 });
 
 // posts - yazıları listele...
 app.get("/blog", (req, res) => {
-	try {	
+	try {
 		const posts = fs.readdirSync(__dirname + "/blog").filter((file) => file.endsWith(".md"));
 		res.render("blog/blogPosts", {
 			posts: posts,

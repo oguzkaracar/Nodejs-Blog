@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <div class="wrapper">
-        <%- include('../partials/header.ejs')%>
-        <div class="main">
-            <div class="container">
-                <div id="main-content">
-                    <div class="blog-header">
-                        <div class="post-title">
-                           <h1><%= title %> </h1>   
-                        </div>
-                        <div class="post-info">
-                            <span class="post-date"> <%= date %></span>
-                        </div>
-                        <div class="seperator">* * *</div>
-                        <p class="post-description"><%= description %></p>
-                         <p class="post-img">    
-                             <img src="<%= image %>" alt="image">
-                        </p>  
-                    </div>
-                    <div class="blog-content"><%- post %></div>
-                    <div class="seperator">* * *</div>
-                </div>
-            </div>
-        </div>
-       
-        
-    </div>
-   
-</body>
+	<%- include('../partials/head.ejs') %>
+	<body>
+		<div class="wrapper">
+			<%- include('../partials/header.ejs')%>
+			<div class="main">
+				<div class="container">
+					<div id="main-content">
+						<div class="blog-header">
+							<div class="post-title">
+								<h1><%= title %></h1>
+							</div>
+							<div class="post-info">
+								<span class="post-date"> <%= date %></span>
+							</div>
+							<div class="seperator">* * *</div>
+							<p class="post-description"><%= description %></p>
+							<p class="post-img">
+								<img src="<%= image %>" alt="image" />
+							</p>
+						</div>
+						<div class="blog-content"><%- post %></div>
+						<div class="seperator">* * *</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			let blogElement = document.getElementsByClassName("blog-content")[0];
+			let aTag = blogElement.getElementsByTagName("a");
+
+			// htmlCollection to array
+			let arrayA = [...aTag];
+
+			// adding target attribute.
+			arrayA.forEach((a) => {
+				a.setAttribute("target", "_blank");
+			});
+		</script>
+	</body>
 </html>
-
-
-
