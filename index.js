@@ -1,18 +1,21 @@
 const express = require("express");
 const fs = require("fs");
 
+
+// path for the ejs folder
+const path = require("path");
+
+
 // body parser
 const app = express();
 
 // if you have a public dir with static scripts and styles
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "/public")));
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// path for the ejs folder
-const path = require("path");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -65,8 +68,7 @@ app.get("/hakkimda", (req, res) => {
 });
 
 // 404 page middleware
-
-app.use(function (req, res) {
+app.use((req, res) => {
 	res.status(404).render("404");
 });
 
